@@ -1,0 +1,94 @@
+<!--QQstartQQ		
+address	data	
+Idle
+@0	 | bb004001	reset active
+@1	 | aa003001	turn reset off with delay
+	 | 82002001	h3 low
+	 | c6002001	h2 high
+	 | 44002001	h1 low
+	 | 6c002001	h3 high
+	 | 28002001	h2 low
+@7	 | aa001001	h1 high wait reset settling
+@8	 | aa020801	sample signal for gain setting
+@9	 | aac03001	summing well high
+@10	 | aa000001	summing well low signal settling
+@11	 | aa000801	sample signal
+@12	 | aa00f001	turn off sampling
+	 | 00000008	loop to 0 for num col
+	 | 6cc05002	V2 high
+	 | 44005002	V1 low  TG low
+	 | c6005002	V3 high
+	 | 82005002	V2 low
+	 | aac05002	V1,TG high
+	 | 28c05002	V3 low,clamp off
+	 | 0000000f	return to idle state
+	 
+
+@32	 | bb004001	reset active
+	 | aa00f001	turn reset off no delay
+	 | 82002001	h3 low
+	 | c6002001	h2 high
+	 | 44002001	h1 low
+	 | 6c002001	h3 high
+	 | 28002001	h2 low
+	 | aa001001	h1 high wait reset settling
+	 | aa011801	sample reset
+	 | aac03001	summing well high
+	 | aa000001	summing well low signal settling
+	 | aa020801	sample signal
+	 | aa00f001	turn off sampling
+	 | 00200008	loop to 32 for num col
+	 | 6cc05002	V2 high
+	 | 44005002	V1 low  TG low
+	 | c6005002	V3 high
+	 | 82005002	V2 low
+	 | aac05002	V1,TG high
+	 | 28c05002	V3 low,clamp off
+	 | 00201008	loop to 32 for num row
+	 | 0000000f	return to idle state
+
+		
+@96	 | aa00f001	serial clock initial conditions
+@97	 | 88c0f002	parallel clock initial conditions
+@98	 | bb004001	reset active
+@99	 | aa00f001	turn reset off no delay
+@100	 | 88002001	h3 low
+@101	 | cc002001	h2 high
+@102	 | 44002001	h1 low
+@103	 | 66002001	h3 high
+@104	 | 22002001	h2 low
+@105	 | aa002001	h1 high
+@106	 | aac03001	summing well high
+@107	 | aa003001	summing well low
+@108	 | 00622008	loop to 66 for num clear col
+@109	 | cc005002	V2 high TG low
+@110	 | 44005002	V1 low
+@111	 | 66005002	V3 high
+@112	 | 22005002	V2 low
+@113	 | aac05002	V1,TG high
+@114	 | 88c05002	V3 low
+@115	 | 00621008	loop to 66 for num rows
+@116	 | 0000000f	return to idle state
+		
+@128	 | bb004001	reset active
+@129	 | aa00f001	turn reset off no delay
+@130	 | 88002001	h3 low
+@131	 | cc002001	h2 high
+@132	 | 44002001	h1 low
+@133	 | 66002001	h3 high
+@134	 | 22002001	h2 low
+@135	 | aa001001	h1 high wait reset settling
+@136	 | aa011801	sample reset
+@137	 | aac03001	summing well high
+@138	 | aa000001	summing well low signal settling
+@139	 | aa020801	sample signal
+@140	 | aa00f001	turn off sampling
+@141	 | 00800008	loop to 128 for num col
+@142	 | cc005002	V2 high TG low
+@143	 | 44005002	V1 low
+@144	 | 66005002	V3 high
+@145	 | 22005002	V2 low
+@146	 | aac05002	V1,TG high
+@147	 | 88c05002	V3 low
+@148	 | 0000000f	return to idle state
+<!--QQendQQ-->		

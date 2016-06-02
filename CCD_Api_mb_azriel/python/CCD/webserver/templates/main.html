@@ -1,0 +1,92 @@
+<!doctype html>
+<title> CCD Shell</title>
+
+ <head>
+<style>
+#output {
+    border: 2px solid black;
+    padding: 5px;
+    margin: 10px;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    font-size: 10pt;
+}
+#form {margin: 10px;}
+#command { width: 70%;
+           font-family: monospace;}
+#clear {float: right;}
+#box {width: 700px;
+      height: 400px;
+}
+#submit {
+    position: absolute;
+    left: -9999px;
+    width: 1p;
+    height: 1px;
+}
+#input {color:green;}
+#t {width: 700px;}
+</style>
+
+</head>
+
+<body>
+<div id="box">
+<pre id="output"><code>{% if output %}
+{{ output|safe }}
+{% else %}
+Enter a command and see the output here!
+Type "help" to see a list of commands.
+Use the up and down arrows to scroll through your past commands.
+{% endif %}</code></pre>
+<table id="t">
+  <tr>
+    <td>
+      <form action="/ccd" method="post" id="form" autocomplete="off">
+        <input type="text" name="command" id="command" placeholder="press enter to submit command">
+        <input type="submit" name="action" value="Submit" id="submit" autocomplete="off">
+        <input type="submit" name="action" value="Clear Output" id="clear">
+      </form>
+    </td>
+    <td>
+      <form action="/download" method="get">
+        <input type="submit" name="action" value="Download FITS" id="download">
+      </form>
+    </td>
+  </tr>
+</table>
+</div>
+
+<script type="text/javascript">
+var objDiv = document.getElementById("output");
+objDiv.scrollTop = objDiv.scrollHeight;
+
+document.getElementById('command').focus()
+
+document.getElementById('form').onsubmit = function() {
+    var theFormItself = 
+        document.getElementById('form');
+    theFormItself.style.display = 'none';        
+}
+
+hist = {{ hist|safe }}
+histindex = 0
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 38:
+            if (histindex < hist.length-1) {
+                histindex++
+                document.getElementById('command').value = hist[histindex]
+            }
+            break
+        case 40:
+            if (histindex > 0) {
+                histindex--
+                document.getElementById('command').value = hist[histindex]
+            }
+            break
+    }
+};
+</script>
+</body>

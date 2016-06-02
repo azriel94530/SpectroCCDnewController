@@ -1,0 +1,4 @@
+This directory contains the default values that are used when one calls 
+lbnl_controller_set_default_dacs or similar.  Make sure that the environment
+variable CONTROLLER_DEFAULTS_DIR is set to the location of this folder.
+Single line comments are started with the # character.  
